@@ -24,7 +24,8 @@ class FECNet(nn.Module):
         depth = 100
         block_config = [5]
         efficient = True
-        self.Inc = InceptionResnetV1(pretrained='vggface2', device='cuda').eval()
+        #self.Inc = InceptionResnetV1(pretrained='vggface2', device='cuda').eval()
+        self.Inc = InceptionResnetV1(pretrained=None, num_classes=8631, device='cuda').eval()
         for param in self.Inc.parameters():
             param.requires_grad = False
         self.dense = DenseNet(growth_rate=growth_rate,
